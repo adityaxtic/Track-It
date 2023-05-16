@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackIt</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.49.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./script.js" type="module" defer></script>
+</head>
+
+<body class="max-w-xl mx-auto">
+    <nav>
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <div class="text-3xl font-bold">TrackIt</div>
+            </div>
+            <div class="flex-none">
+                <label class="swap swap-rotate">
+                    <input type="checkbox" id="theme" />
+                    <svg class="swap-on fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+                    </svg>
+                    <svg class="swap-off fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+                    </svg>
+
+                </label>
+            </div>
+        </div>
+    </nav>
+    <div id="bottom-nav" class="btm-nav max-w-lg mx-auto z-10">
+        <button data-index="0">
+            <img class="h-8 w-8 p-2 rounded-full bg-neutral"
+                src="https://img.icons8.com/ios-glyphs/72/ffffff/plus-math.png" />
+            <span class="btm-nav-label">Add</span>
+        </button>
+        <button data-index="1" class="active">
+            <img class="h-8 w-8 p-2 rounded-full bg-neutral"
+                src="https://img.icons8.com/ios-glyphs/72/ffffff/home.png" />
+            <span class="btm-nav-label">Home</span>
+        </button>
+        <button data-index="2">
+            <img class="h-8 w-8 p-2 rounded-full bg-neutral"
+                src="https://img.icons8.com/ios-glyphs/72/ffffff/money.png" />
+            <span class="btm-nav-label">Transactions</span>
+        </button>
+    </div>
+    <!-- Add -->
+    <section id="add-page" class="hidden h-[80vh] px-4 text-lg overflow-y-auto scrollbar">
+        <div class="divider">Add new category</div>
+        <form id="category-add" class="flex flex-wrap gap-4">
+            <input data-inp id="category" type="text" class="input input-bordered input-lg flex-1"
+                placeholder="Enter new category">
+            <button data-btn class="btn btn-lg btn-warning flex-1">Add</button>
+        </form>
+        <div class="divider mt-8">Add new expense</div>
+        <form id="expense-add" class="flex flex-col gap-4">
+            <span class="flex gap-4 flex-wrap">
+                <input data-inp type="number" name="expense" id="expense" placeholder="Enter Amount"
+                    class="input input-bordered input-lg flex-1">
+                <select name="category" data-catSelect id="expense-category"
+                    class="select select-bordered flex-1 select-lg">
+                </select>
+            </span>
+            <input data-inp type="text" id="expense-detail" placeholder="Enter details about your expense"
+                class="input input-bordered input-lg">
+            <button data-btn class="btn btn-md btn-error">Add Expense</button>
+        </form>
+        <div class="divider mt-4">Add budget</div>
+        <form id="budget-add" class="flex flex-col gap-4">
+            <input data-inp type="number" name="budget" id="budget" placeholder="Enter Amount"
+                class="input input-bordered input-lg">
+            <button data-btn class="btn btn-md btn-success">Add Budget</button>
+        </form>
+    </section>
+    <!-- Home -->
+    <section id="home-page" class=" min-h-[87vh] relative p-4">
+        <div class="overflow-y-auto h-[55vh] scrollbar overflow-hidden pr-2">
+            <table class="table table-zebra w-full shadow shadow-xl  rounded-box">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div
+            class="absolute bottom-20 left-0 right-0 mx-2 shadow flex gap-1 p-1 text-primary-content overflow-x-auto scrollbar pb-2">
+            <div class="stat bg-neutral rounded-box text-warning">
+                <div class="stat-title">Budget</div>
+                <div data-stat class="stat-value">0</div>
+            </div>
+            <div class="stat bg-neutral rounded-box text-error">
+                <div class="stat-title">Expense</div>
+                <div data-stat class="stat-value">0</div>
+            </div>
+            <div class="stat bg-neutral rounded-box text-success">
+                <div class="stat-title">Savings</div>
+                <div data-stat class="stat-value">0</div>
+            </div>
+        </div>
+    </section>
+    <!-- Transaction -->
+    <section class="hidden min-h-[87vh] relative p-4 flex flex-col gap-2">
+        <div class="options flex justify-between pr-6">
+            <div class="form-control flex-row items-center gap-2">
+                <label for="expense-category" class="label label-text gap-1">Filter by</label>
+                <select name="category" id="expense-category" class="select select-bordered select-sm">
+                    <option value="groceries">Show All</option>
+                    <option value="groceries">Budget</option>
+                    <option value="groceries">Expense</option>
+                    <option value="groceries">Groceries</option>
+                </select>
+            </div>
+            <div class="form-control flex-row items-center gap-2">
+                <label for="expense-category" class="label label-text gap-1">Sort by</label>
+                <select name="category" id="expense-category" class="select select-bordered select-sm">
+                    <option value="groceries">Latest</option>
+                    <option value="groceries">Oldest</option>
+                </select>
+            </div>
+        </div>
+        <div class="transactions w-full flex flex-col gap-4 h-[70vh] overflow-y-auto scrollbar pr-4">
+        </div>
+    </section>
+</body>
+
+</html>

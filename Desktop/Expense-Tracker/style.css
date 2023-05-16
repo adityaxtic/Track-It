@@ -1,0 +1,40 @@
+  button>* {
+      pointer-events: none;
+  }
+
+  tr td:last-child::before,
+  .stat-value::before {
+      content: '₹';
+  }
+
+  .card-body .text-error::before {
+      content: '- ₹';
+  }
+
+  .card-body .text-success::before {
+      content: '+ ₹';
+  }
+
+  .stat-value {
+      font-size: 1.5rem;
+      font-weight: 500;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: #111;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 100vh;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #fff;
+  }
